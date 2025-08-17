@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Proposal to Elevate Your Shows</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+    <!-- Base theme is now light -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/white.min.css" id="theme">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Added Rajdhani font for headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles inspired by the reference HTML -->
+    <style>
+        :root {
+            /* New color palette and design tokens */
+            --brand-teal: #0f766e;
+            --brand-slate: #334155;
+            --brand-cream: #fafaf9;
+            --ink: #0b1324;
+            --muted: #64748b;
+            --border: #e5e7eb;
+
+            /* Reveal.js Overrides */
+            --r-main-font: 'Inter', sans-serif;
+            --r-main-font-size: 26px; /* Slightly smaller for more content */
+            --r-background-color: var(--brand-cream);
+            --r-main-color: var(--ink);
+            --r-heading-color: var(--brand-slate);
+            --r-heading-font: 'Rajdhani', sans-serif;
+            --r-heading-font-weight: 700;
+            --r-heading-text-transform: uppercase;
+            --r-link-color: var(--brand-teal);
+            --r-link-color-hover: var(--ink);
+            --r-selection-background-color: var(--brand-teal);
+            --r-selection-color: #fff;
+            --r-heading1-size: 2.4em;
+            --r-heading2-size: 1.7em;
+            --r-heading3-size: 1.2em;
+            --r-heading4-size: 1.0em;
+        }
+
+        .reveal .slides section .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            text-align: left;
+        }
+        .reveal .slides section .grid ul {
+            margin-top: 0;
+        }
+
+        .reveal h3, .reveal h4 {
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            color: var(--brand-slate);
+        }
+
+        .reveal .meta, .reveal .small {
+            font-size: 0.6em;
+            color: var(--muted);
+            margin-top: 0.5em;
+        }
+        
+        .reveal strong {
+            color: var(--brand-slate);
+        }
+
+        .reveal .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(15,118,110,.09);
+            color: var(--brand-teal);
+            font-weight: 600;
+            font-size: 0.5em;
+            vertical-align: middle;
+        }
+
+        .reveal table {
+            margin: 1.5rem auto;
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .reveal th, .reveal td {
+             border-bottom: 1px solid var(--border);
+        }
+        
+        .reveal tr:last-child td {
+            border-bottom: none;
+        }
+
+        .reveal th {
+            background-color: #f8fafc;
+            font-weight: 700;
+            color: var(--brand-slate);
+            font-family: 'Inter', sans-serif;
+            text-transform: none;
+            padding: 0.5rem 0.75rem;
+        }
+
+        .reveal td {
+            text-align: left;
+            vertical-align: top;
+            padding: 0.75rem;
+        }
+
+        .reveal .tag {
+            font-size: 0.5em;
+            color: var(--muted);
+        }
+        
+        .reveal .logo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .reveal .logo-grid img {
+            height: 80px;
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+        
+        .reveal .logo-grid img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .reveal footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.5em;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- Title Slide -->
+            <section>
+                <h1>Proposal to Elevate Your Shows</h1>
+                <p class="meta">Prepared by The Edw4rds Platform • For Rich @ Soundguy Productions</p>
+                <p class="meta">Date: <span id="today"></span></p>
+            </section>
+
+            <!-- 1. StoryBrand Messaging (Vertical Stack) -->
+            <section>
+                <section>
+                    <h2>1) StoryBrand Messaging <span class="badge">Story</span></h2>
+                    <p style="font-size: 0.7em;">Defining the narrative that connects with your ideal customer.</p>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;">
+                        <h3>The Customer's Story</h3>
+                        <h4>Character</h4>
+                        <p>Pacific Northwest promoters, festivals, venues, and artists who need reliable, great‑sounding shows without guesswork.</p>
+                        <h4>Problem</h4>
+                        <ul>
+                            <li><strong>External:</strong> Inconsistent sound, unclear tech plans, stressful show days.</li>
+                            <li><strong>Internal:</strong> Worry that the audience experience won’t match the artist’s vision.</li>
+                            <li><strong>Philosophical:</strong> Every performance deserves to be heard clearly and confidently.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;">
+                        <h3>Your Role as the Guide</h3>
+                        <h4>Guide</h4>
+                        <p>Soundguy Productions — 20 years serving the NW — brings seasoned engineers, concert‑ready systems, and calm show management.</p>
+                        <h4>The Plan</h4>
+                        <ul>
+                            <li><strong>Assess:</strong> Stage plot, input list, venue constraints, schedule.</li>
+                            <li><strong>Prepare:</strong> System design, advance, staffing, load‑in plan.</li>
+                            <li><strong>Execute:</strong> Tight cues, consistent mixes, fast changeovers.</li>
+                        </ul>
+                        <h4>Call to Action</h4>
+                        <p>Lock dates with a deposit and confirm your package.</p>
+                        <h4>The Stakes (Success / Failure)</h4>
+                        <p><strong>Success:</strong> Artists feel taken care of, audiences rave, you book repeat gigs.<br><strong>Failure avoided:</strong> Last‑minute scrambles, blown cues, unhappy stakeholders.</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 2. Web Presence Analysis (Vertical Stack) -->
+            <section>
+                <section>
+                    <h2>2) Web Presence Analysis</h2>
+                    <p style="font-size: 0.7em;">Assessing the current digital footprint to find opportunities.</p>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 80%; margin: 0 auto;">
+                        <h3>Strengths</h3>
+                        <ul>
+                            <li>Clear positioning: “Quality sound production that fits your budget.”</li>
+                            <li>Credibility: “Celebrating 20 years of serving the Pacific Northwest.”</li>
+                            <li>Service breadth: Live sound, lighting, system install/diagnostics, event production management.</li>
+                            <li>Partner logos and event associations create social proof.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 80%; margin: 0 auto;">
+                        <h3>Gaps &amp; Opportunities</h3>
+                        <ul>
+                            <li><strong>Content depth:</strong> Services page is brief; add package tiers, typical budgets, and tech specs.</li>
+                            <li><strong>Conversion:</strong> No visible booking calendar or “Request a Quote” funnel; contact defaults to email/PO Box.</li>
+                            <li><strong>UX polish:</strong> Duplicated headings, and sparse Gallery lessen perceived scale.</li>
+                            <li><strong>SEO:</strong> Limited service‑area pages (e.g., Portland, Gresham, Salem), few keyword‑rich case studies, missing schema (Event, Organization).</li>
+                            <li><strong>Performance:</strong> Likely heavy hero/media; recommend image compression and lazy‑loading for speed.</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- 3. Website Recommendations (Vertical Stack) -->
+            <section>
+                <section>
+                    <h2>3) Website Recommendations</h2>
+                    <p style="font-size: 0.7em;">Translating your story into a high-performing website.</p>
+                </section>
+                <section>
+                     <div style="text-align: left; width: 90%; margin: 0 auto;">
+                        <h3>Structure &amp; Content</h3>
+                        <ul>
+                            <li><strong>Home:</strong> Hero with <em>date availability</em> CTA; short Why Us; featured packages; recent festivals; testimonials; contact block.</li>
+                            <li><strong>Services:</strong> Break into <em>Live Sound</em>, <em>Lighting</em>, <em>Production Management</em>, <em>Installs/Diagnostics</em>; include deliverables and starting prices.</li>
+                            <li><strong>Case Studies:</strong> 3–5 shows with stage plots, input lists, FOH notes, challenges solved.</li>
+                            <li><strong>Gallery:</strong> Curated, captioned sets (before/after, rig shots, crowds) — fast, compressed images.</li>
+                            <li><strong>Contact:</strong> Quote form (date, venue, schedule, inputs, power, budget range) + deposit CTA.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;">
+                        <h3>Visual &amp; Technical</h3>
+                        <h4>Visual & UX</h4>
+                         <ul>
+                            <li>Bold type, dark-over-image hero, and crisp show photos; keep a consistent color system.</li>
+                            <li>Add iconography for speed: inputs, crew, truck/footprint, changeover times.</li>
+                            <li>Sticky “Request a Quote” and “Check Dates” buttons.</li>
+                            <li>Accessibility: proper contrast, alt text, focus states.</li>
+                        </ul>
+                        <h4>Technical</h4>
+                        <ul>
+                            <li>Image optimization (WebP), lazy‑load, caching/CDN.</li>
+                            <li>Schema: Organization, Event, LocalBusiness; JSON‑LD for services/areas.</li>
+                            <li>SEO pages for target geos: Portland, Gresham, Beaverton, Vancouver (WA).</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 4. Automation Opportunities (Vertical Stack) -->
+            <section>
+                <section>
+                    <h2>4) Automation Opportunities <span class="badge">System</span></h2>
+                    <p style="font-size: 0.7em;">Building a system to save time and capture more revenue.</p>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;">
+                        <h3>Immediate Wins: Core Automations</h3>
+                        <ul>
+                            <li><strong>Quote Intake → CRM‑Lite:</strong> Web form → Supabase (leads table) with show metadata (date, venue, inputs, budget).</li>
+                            <li><strong>Availability &amp; Scheduling:</strong> n8n checks calendar conflicts; sends date‑hold email/SMS.</li>
+                            <li><strong>Instant Estimate:</strong> Rule‑based estimator (crew, gear class, load‑in/out) returns a ballpark PDF/HTML quote.</li>
+                            <li><strong>Deposit &amp; Contract:</strong> Stripe checkout link + e‑signature; deposit posts and triggers “confirmed” workflow.</li>
+                            <li><strong>Run‑of‑Show Kit:</strong> Auto‑generated advance packet (stage plot, input list template, call times) sent to client.</li>
+                            <li><strong>Post‑Show Follow‑Up:</strong> Testimonial/NPS capture + media request, auto‑curated to the Gallery.</li>
+                        </ul>
+                    </div>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;">
+                        <h3>Future Growth: Advanced Brainstorm</h3>
+                        <ul>
+                            <li><strong>Inventory &amp; Prep:</strong> Gear checkout via QR; pull sheets and maintenance reminders.</li>
+                            <li><strong>Crew Pipeline:</strong> Preferred‑crew availability poll; automated call sheets.</li>
+                            <li><strong>Margin Watch:</strong> Job costing dashboard (labor, truck, consumables) vs. quote.</li>
+                            <li><strong>Client Portal:</strong> Live run‑sheet updates, change‑order approvals, invoice status.</li>
+                            <li><strong>SEO Feed:</strong> After each show, publish a mini case study (venue, genre, challenges solved) to boost rankings.</li>
+                        </ul>
+                    </div>
+                </section>
+            </section>
+
+            <!-- 5. Pricing Overview -->
+            <section>
+                <h2>5) Pricing Overview</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:20%;">Phase</th>
+                            <th>What’s Included</th>
+                            <th style="width:25%;">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fragment">
+                            <td><strong>Story</strong></td>
+                            <td>Messaging foundations, package framing, geo/SEO map, and a prioritized site plan.</td>
+                            <td>$500 flat</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>System</strong> <br><span class="tag">up to 6 automations</span></td>
+                            <td>Core automations (lead → deposit → advance → follow‑up), hosting, and maintenance.</td>
+                            <td>$500 setup + $100/mo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- 6. Timeline & Next Steps -->
+            <section>
+                <h2>6) Timeline &amp; Next Steps</h2>
+                <div class="grid">
+                    <div>
+                        <h3>High‑Level Timeline</h3>
+                        <ul>
+                            <li class="fragment"><strong>Week 1 — Story:</strong> Discovery, messaging, page map, SEO/geo plan.</li>
+                            <li class="fragment"><strong>Weeks 2–3 — System:</strong> Build site updates and core automations (intake, estimate, deposit, advance, follow‑up).</li>
+                            <li class="fragment"><strong>Week 4 — Launch:</strong> Final QA, analytics, and go‑live. First case study published.</li>
+                            <li class="fragment"><strong>Ongoing — Scale:</strong> Monthly optimizations, content cadence, and lead channels.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Next Steps</h3>
+                        <ol>
+                            <li class="fragment">Approve this proposal and <strong>pay deposit</strong> to reserve your start date.</li>
+                            <li class="fragment">Share three recent shows for case studies (photos, set lists, unique challenges).</li>
+                            <li class="fragment">Provide current stage plots/input lists to seed templates.</li>
+                            <li class="fragment">Confirm Stripe account details for deposits and invoices.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Slide -->
+            <section>
+                <h2>Questions?</h2>
+                <p>Let's elevate your shows together.</p>
+                <br>
+                <h3>The Edw4rds Platform</h3>
+                <p style="font-size: 0.8em; opacity: 0.9; color: var(--brand-teal);">M4DE TO ELEV4TE</p>
+            </section>
+
+        </div>
+        <footer>The Edw4rds Platform — M4DE TO ELEV4TE</footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            // The following options are set to false to prevent errors in sandboxed environments
+            history: false,
+            hash: false,
+            
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+
+        // Set the date on the title slide
+        document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    </script>
+</body>
+</html>

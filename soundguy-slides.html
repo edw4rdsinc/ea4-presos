@@ -149,6 +149,10 @@
             font-size: 0.5em;
             color: var(--muted);
         }
+        .reveal .recommendation-list p {
+            font-size: 0.8em;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -234,37 +238,51 @@
             <!-- 3. Website Recommendations (Vertical Stack) -->
             <section>
                 <section>
-                    <h2>3) Website Recommendations</h2>
-                    <p style="font-size: 0.7em;">Translating your story into a high-performing website.</p>
+                    <h2>3) Website Refresh Recommendations</h2>
+                    <p style="font-size: 0.7em;">Your website is the first impression. These recommendations focus on the biggest opportunities to win leads, build confidence, and streamline bookings.</p>
                 </section>
                 <section>
-                     <div style="text-align: left; width: 90%; margin: 0 auto;">
-                        <h3>Structure &amp; Content</h3>
-                        <ul>
-                            <li><strong>Home:</strong> Hero with <em>date availability</em> CTA; short Why Us; featured packages; recent festivals; testimonials; contact block.</li>
-                            <li><strong>Services:</strong> Break into <em>Live Sound</em>, <em>Lighting</em>, <em>Production Management</em>, <em>Installs/Diagnostics</em>; include deliverables and starting prices.</li>
-                            <li><strong>Case Studies:</strong> 3–5 shows with stage plots, input lists, FOH notes, challenges solved.</li>
-                            <li><strong>Gallery:</strong> Curated, captioned sets (before/after, rig shots, crowds) — fast, compressed images.</li>
-                            <li><strong>Contact:</strong> Quote form (date, venue, schedule, inputs, power, budget range) + deposit CTA.</li>
-                        </ul>
+                     <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>1. Showcase Work Samples</h3>
+                        <p><strong>Problem:</strong> Your great gear and project history aren’t well represented online.<br>
+                           <strong>Solution:</strong> Add a curated portfolio with photos/videos and short descriptions.<br>
+                           <strong>Future:</strong> Visitors instantly see your professionalism and past success, building trust and confidence in booking.</p>
+                        <h3>2. Improve Contact Flow</h3>
+                        <p><strong>Problem:</strong> The current contact process is clunky and long, creating friction.<br>
+                           <strong>Solution:</strong> Simplify the form to the essentials and connect it to follow-up automations.<br>
+                           <strong>Future:</strong> Inquiries are quick and painless, leading to more captured leads and less drop-off.</p>
+                     </div>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>3. Mobile Optimization</h3>
+                        <p><strong>Problem:</strong> The site doesn’t render cleanly on phones or tablets.<br>
+                           <strong>Solution:</strong> Refresh layout and media for full responsiveness and fast load speeds.<br>
+                           <strong>Future:</strong> Clients on any device have a smooth, professional experience, increasing trust and conversions.</p>
+                        <h3>4. Consistent Branding</h3>
+                        <p><strong>Problem:</strong> Fonts, colors, and imagery are inconsistent across the site.<br>
+                           <strong>Solution:</strong> Apply a cohesive brand system that reflects your professionalism.<br>
+                           <strong>Future:</strong> The website feels polished and credible, reinforcing the experience you deliver at events.</p>
+                    </div>
+                </section>
+                 <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>5. Highlight Testimonials</h3>
+                        <p><strong>Problem:</strong> Client feedback isn’t visible or emphasized.<br>
+                           <strong>Solution:</strong> Feature testimonials prominently with names and context.<br>
+                           <strong>Future:</strong> Prospects see clear social proof, reducing hesitation and building confidence to book.</p>
+                        <h3>6. Clarify the Story</h3>
+                        <p><strong>Problem:</strong> The messaging focuses on you instead of the client’s problem.<br>
+                           <strong>Solution:</strong> Rewrite homepage copy around the client’s needs and your role as their guide.<br>
+                           <strong>Future:</strong> Visitors feel understood, trust your expertise, and see a clear path to booking.</p>
                     </div>
                 </section>
                 <section>
-                    <div style="text-align: left; width: 90%; margin: 0 auto;">
-                        <h3>Visual &amp; Technical</h3>
-                        <h4>Visual & UX</h4>
-                         <ul>
-                            <li>Bold type, dark-over-image hero, and crisp show photos; keep a consistent color system.</li>
-                            <li>Add iconography for speed: inputs, crew, truck/footprint, changeover times.</li>
-                            <li>Sticky “Request a Quote” and “Check Dates” buttons.</li>
-                            <li>Accessibility: proper contrast, alt text, focus states.</li>
-                        </ul>
-                        <h4>Technical</h4>
-                        <ul>
-                            <li>Image optimization (WebP), lazy‑load, caching/CDN.</li>
-                            <li>Schema: Organization, Event, LocalBusiness; JSON‑LD for services/areas.</li>
-                            <li>SEO pages for target geos: Portland, Gresham, Beaverton, Vancouver (WA).</li>
-                        </ul>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>7. Generative Engine Optimization (AI-era SEO)</h3>
+                        <p><strong>Problem:</strong> The site isn’t structured for AI-driven search results.<br>
+                           <strong>Solution:</strong> Add FAQ-style content and structured headings for generative engines to parse.<br>
+                           <strong>Future:</strong> You appear in both Google search and AI-driven answers, expanding visibility and lead flow.</p>
                     </div>
                 </section>
             </section>
@@ -272,32 +290,51 @@
             <!-- 4. Automation Opportunities (Vertical Stack) -->
             <section>
                 <section>
-                    <h2>4) Automation Opportunities <span class="badge">System</span></h2>
-                    <p style="font-size: 0.7em;">Building a system to save time and capture more revenue.</p>
+                    <h2>4) Priority Automations <span class="badge">System</span></h2>
+                    <p style="font-size: 0.7em;">Simple automations can smooth the entire process — from first inquiry to final payment — and bring peace of mind to every event.</p>
                 </section>
                 <section>
-                    <div style="text-align: left; width: 90%; margin: 0 auto;">
-                        <h3>Immediate Wins: Core Automations</h3>
-                        <ul>
-                            <li><strong>Quote Intake → CRM‑Lite:</strong> Web form → Supabase (leads table) with show metadata (date, venue, inputs, budget).</li>
-                            <li><strong>Availability &amp; Scheduling:</strong> n8n checks calendar conflicts; sends date‑hold email/SMS.</li>
-                            <li><strong>Instant Estimate:</strong> Rule‑based estimator (crew, gear class, load‑in/out) returns a ballpark PDF/HTML quote.</li>
-                            <li><strong>Deposit &amp; Contract:</strong> Stripe checkout link + e‑signature; deposit posts and triggers “confirmed” workflow.</li>
-                            <li><strong>Run‑of‑Show Kit:</strong> Auto‑generated advance packet (stage plot, input list template, call times) sent to client.</li>
-                            <li><strong>Post‑Show Follow‑Up:</strong> Testimonial/NPS capture + media request, auto‑curated to the Gallery.</li>
-                        </ul>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>1. Inquiry → Intake Form</h3>
+                        <p><strong>Problem:</strong> Leads come in scattered — calls, texts, emails — missing key details.<br>
+                           <strong>Solution:</strong> Branded web form captures event type, date, budget, and contact info.<br>
+                           <strong>Future:</strong> Every lead is organized and complete. You see the full picture right away.</p>
+                        <h3>2. Proposal Automation</h3>
+                        <p><strong>Problem:</strong> Proposals are built from scratch, wasting hours and creating inconsistencies.<br>
+                           <strong>Solution:</strong> Automated templates pull in client details and package options.<br>
+                           <strong>Future:</strong> One click = polished, branded proposal. Clients see professionalism instantly.</p>
                     </div>
                 </section>
                 <section>
-                    <div style="text-align: left; width: 90%; margin: 0 auto;">
-                        <h3>Future Growth: Advanced Brainstorm</h3>
-                        <ul>
-                            <li><strong>Inventory &amp; Prep:</strong> Gear checkout via QR; pull sheets and maintenance reminders.</li>
-                            <li><strong>Crew Pipeline:</strong> Preferred‑crew availability poll; automated call sheets.</li>
-                            <li><strong>Margin Watch:</strong> Job costing dashboard (labor, truck, consumables) vs. quote.</li>
-                            <li><strong>Client Portal:</strong> Live run‑sheet updates, change‑order approvals, invoice status.</li>
-                            <li><strong>SEO Feed:</strong> After each show, publish a mini case study (venue, genre, challenges solved) to boost rankings.</li>
-                        </ul>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>3. Invoice & Payment Collection</h3>
+                        <p><strong>Problem:</strong> Payments are split across cash, checks, and apps — messy and delayed.<br>
+                           <strong>Solution:</strong> Proposals trigger automated invoices with secure online payment.<br>
+                           <strong>Future:</strong> Deposits land up front, balances close on time, bookkeeping is effortless.</p>
+                        <h3>4. Auto-Responder</h3>
+                        <p><strong>Problem:</strong> Inquiries sometimes wait hours or days for a reply. Competitors move faster.<br>
+                           <strong>Solution:</strong> Instant, personalized email confirms receipt and shares next steps.<br>
+                           <strong>Future:</strong> Clients feel acknowledged right away, even while you are mixing a show.</p>
+                    </div>
+                </section>
+                <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>5. Document & Contract Automation</h3>
+                        <p><strong>Problem:</strong> Contracts are pieced together manually — slow and error-prone.<br>
+                           <strong>Solution:</strong> Standardized digital contracts auto-filled and signed electronically.<br>
+                           <strong>Future:</strong> Jobs lock in fast. Terms are clear. Paperwork stress disappears.</p>
+                        <h3>6. Auto-Sync Gear Database Updates</h3>
+                        <p><strong>Problem:</strong> Gear database falls behind — items used on jobs don’t get logged back in.<br>
+                           <strong>Solution:</strong> Each booking creates a “Check Back In” reminder after the event.<br>
+                           <strong>Future:</strong> The gear list stays current. Missing items get flagged before they vanish.</p>
+                    </div>
+                </section>
+                 <section>
+                    <div style="text-align: left; width: 90%; margin: 0 auto;" class="recommendation-list">
+                        <h3>7. Simple Gear Usage Log</h3>
+                        <p><strong>Problem:</strong> No clear record of which gear is used most or when maintenance is due.<br>
+                           <strong>Solution:</strong> Each job creates a lightweight usage log linked to the database.<br>
+                           <strong>Future:</strong> Patterns emerge — you know what to replace, upgrade, or invest in next.</p>
                     </div>
                 </section>
             </section>

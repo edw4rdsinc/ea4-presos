@@ -20,7 +20,6 @@
         :root {
             /* Colors sourced from tillamookcounty.gov */
             --tc-blue: #004a8f;
-            /* Replaced gold with a sage green for accents */
             --tc-sage: #7E9A93; 
             --tc-link-blue: #007bff;
             --tc-dark-text: #222222;
@@ -31,7 +30,15 @@
 
         .reveal {
             font-family: var(--main-font);
-            color: var(--tc-dark-text);
+        }
+
+        /* Apply blue background and light text to all slides */
+        .reveal .slides section {
+             background-color: var(--tc-blue);
+             color: var(--tc-light-text);
+             border-radius: 12px;
+             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+             padding: 20px;
         }
 
         .reveal h1,
@@ -41,28 +48,12 @@
         .reveal h5,
         .reveal h6 {
             font-family: var(--heading-font);
-            /* Headings are dark text for a cleaner, website-like feel */
-            color: var(--tc-dark-text);
+            color: var(--tc-light-text);
             text-transform: none;
-        }
-        
-        .reveal .slides section {
-             border-radius: 12px;
-             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-             padding: 20px;
-        }
-
-        .reveal .title-slide {
-            background-color: var(--tc-blue);
-            color: var(--tc-light-text);
-        }
-        
-        .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide h3, .reveal .title-slide h4 {
-            color: var(--tc-light-text);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        .reveal .title-slide .accent-bar {
+        .reveal .accent-bar {
             height: 10px;
             background-color: var(--tc-sage);
             width: 50%;
@@ -70,13 +61,13 @@
             border-radius: 5px;
         }
 
-        /* Strong tag is now used for blue emphasis */
+        /* Strong tag is now used for sage emphasis */
         .reveal strong {
-            color: var(--tc-blue);
+            color: var(--tc-sage);
         }
 
         .reveal a {
-            color: var(--tc-link-blue);
+            color: var(--tc-sage);
         }
 
         .reveal .progress {
@@ -109,27 +100,29 @@
         }
 
         .reveal .icon {
-            color: var(--tc-blue);
+            color: var(--tc-sage);
             font-size: 1.5em;
             margin-right: 15px;
         }
-        
-        .reveal .flex-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            gap: 20px;
-        }
-        
-        .reveal .flex-item {
-            flex: 1;
-            background-color: #f8f9fa;
-            border-radius: 8px;
+
+        /* Style for the SMS example box */
+        .reveal .sms-box {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--tc-light-text);
             padding: 20px;
-            border-left: 5px solid var(--tc-sage);
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: left;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .reveal .flex-item h4 {
-            margin-top: 0;
+        .reveal .sms-box p {
+            color: var(--tc-light-text);
+        }
+        .reveal .sms-box hr {
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
     </style>
@@ -138,12 +131,12 @@
     <div class="reveal">
         <div class="slides">
             <!-- Slide 1: Title Slide -->
-            <section class="title-slide">
+            <section>
                 <img src="https://www.tillamookcounty.gov/images/logo-white.png" alt="Tillamook County Logo" style="height: 100px; border: none; box-shadow: none; background: none;" onerror="this.style.display='none'">
                 <h1>The Community Health Line</h1>
                 <div class="accent-bar"></div>
-                <h3>Increasing Health Program Awareness</h3>
-                <h4 style="margin-top: 50px;">A Proposal To Empower The Rural Residents Of Tillamook County </h4>
+                <h3>Increasing Health Program Awareness in Tillamook County</h3>
+                <h4 style="margin-top: 50px;">A Proposal by Samuel Edwards</h4>
             </section>
 
             <!-- Slide 2: Challenge & Solution (Vertical Stack) -->
@@ -155,7 +148,7 @@
                     <ul style="margin-top: 30px;">
                         <li class="fragment"><i class="fas fa-bullhorn icon"></i>Key barrier to better health outcomes is <strong>awareness</strong>, not availability.</li>
                         <li class="fragment"><i class="fas fa-notes-medical icon"></i>Critical areas affected: Diabetes, Opioid Support, and Maternal Health.</li>
-                        <li class="fragment"><i class="fas fa-mobile-alt icon"></i>Current communication methods (websites, social media) don't reach everyone effectively.</li>
+                        <li class="fragment"><i class="fas fa-mobile-alt icon"></i>Current communication methods don't reach everyone effectively.</li>
                     </ul>
                 </section>
                 <!-- 2.2 The Solution -->
@@ -163,8 +156,8 @@
                     <h2>The Solution: A Community Health Line</h2>
                     <p>A <strong>bilingual (English/Spanish)</strong>, automated SMS text-messaging service.</p>
                     <div class="fragment">
-                        <p style="margin-top: 30px; font-size: 1.2em; background-color: #e9f5ff; padding: 20px; border-radius: 8px; border-left: 5px solid var(--tc-blue);">
-                            <i class="fas fa-comment-dots" style="color: var(--tc-blue);"></i>
+                        <p style="margin-top: 30px; font-size: 1.2em; background-color: rgba(0,0,0,0.2); padding: 20px; border-radius: 8px; border-left: 5px solid var(--tc-sage);">
+                            <i class="fas fa-comment-dots" style="color: var(--tc-sage);"></i>
                             It feels like a helpful community bulletin board, not a complex "AI".
                         </p>
                     </div>
@@ -188,16 +181,21 @@
                     <p>A simple process for both residents and the Health Department.</p>
                     <p class="fragment" style="margin-top: 50px;">(Use the down arrow to see the flow for each group)</p>
                 </section>
-                <!-- 3.2 For Residents -->
+                <!-- 3.2 For Residents (Now split into two slides) -->
                 <section>
                     <h2>How It Works (For Residents)</h2>
-                    <p>Simple, intuitive, and immediate.</p>
-                    <div style="background: #f0f0f0; padding: 20px; border-radius: 10px; margin-top: 30px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <p><strong>Step 1:</strong> A resident subscribes to a topic.</p>
+                    <div class="sms-box">
                         <p><strong><i class="fas fa-mobile-alt"></i> Resident Texts:</strong> JOIN</p>
                         <p style="margin-left: 20px;"><strong><i class="fas fa-server"></i> System Responds:</strong> Welcome! Reply with a topic: 1. DIABETES, 2. OPIOID, 3. MATERNAL, 4. ALL</p>
-                        <hr>
-                        <p class="fragment"><strong><i class="fas fa-mobile-alt"></i> Resident Texts:</strong> SCREENING</p>
-                        <p class="fragment" style="margin-left: 20px;"><strong><i class="fas fa-server"></i> System Responds:</strong> Free diabetes screening next Tue, Aug 31 at the Community Hall from 9am-2pm. Walk-ins welcome.</p>
+                    </div>
+                </section>
+                <section>
+                    <h2>How It Works (For Residents)</h2>
+                    <p><strong>Step 2:</strong> They can ask for info at any time.</p>
+                     <div class="sms-box">
+                        <p><strong><i class="fas fa-mobile-alt"></i> Resident Texts:</strong> SCREENING</p>
+                        <p style="margin-left: 20px;"><strong><i class="fas fa-server"></i> System Responds:</strong> Free diabetes screening next Tue, Aug 31 at the Community Hall from 9am-2pm. Walk-ins welcome.</p>
                     </div>
                 </section>
                 <!-- 3.3 For Health Dept -->
@@ -264,3 +262,4 @@
     </script>
 </body>
 </html>
+

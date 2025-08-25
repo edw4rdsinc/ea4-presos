@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Community Health Line Proposal</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+
+    <!-- Custom Theme for Tillamook County Branding -->
+    <style>
+        :root {
+            /* Colors sourced from tillamookcounty.gov */
+            --tc-blue: #004a8f;
+            /* Replaced gold with a sage green for accents */
+            --tc-sage: #7E9A93; 
+            --tc-link-blue: #007bff;
+            --tc-dark-text: #222222;
+            --tc-light-text: #ffffff;
+            --main-font: 'Lato', sans-serif;
+            --heading-font: 'Montserrat', sans-serif;
+        }
+
+        .reveal {
+            font-family: var(--main-font);
+            color: var(--tc-dark-text);
+        }
+
+        .reveal h1,
+        .reveal h2,
+        .reveal h3,
+        .reveal h4,
+        .reveal h5,
+        .reveal h6 {
+            font-family: var(--heading-font);
+            /* Headings are dark text for a cleaner, website-like feel */
+            color: var(--tc-dark-text);
+            text-transform: none;
+        }
+        
+        .reveal .slides section {
+             border-radius: 12px;
+             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+             padding: 20px;
+        }
+
+        .reveal .title-slide {
+            background-color: var(--tc-blue);
+            color: var(--tc-light-text);
+        }
+        
+        .reveal .title-slide h1, .reveal .title-slide h2, .reveal .title-slide h3, .reveal .title-slide h4 {
+            color: var(--tc-light-text);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .reveal .title-slide .accent-bar {
+            height: 10px;
+            background-color: var(--tc-sage);
+            width: 50%;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+
+        /* Strong tag is now used for blue emphasis */
+        .reveal strong {
+            color: var(--tc-blue);
+        }
+
+        .reveal a {
+            color: var(--tc-link-blue);
+        }
+
+        .reveal .progress {
+            color: var(--tc-sage);
+        }
+        
+        .reveal .controls .controls-arrow {
+            color: var(--tc-sage);
+        }
+        
+        .reveal ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .reveal li {
+            margin-bottom: 0.7em;
+            padding-left: 1.2em;
+            position: relative;
+        }
+        
+        .reveal li::before {
+            content: '\f058'; /* Font Awesome check-circle icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--tc-sage);
+            position: absolute;
+            left: 0;
+            top: 0.1em;
+        }
+
+        .reveal .icon {
+            color: var(--tc-blue);
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        
+        .reveal .flex-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        
+        .reveal .flex-item {
+            flex: 1;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 5px solid var(--tc-sage);
+        }
+        .reveal .flex-item h4 {
+            margin-top: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- Slide 1: Title Slide -->
+            <section class="title-slide">
+                <img src="https://www.tillamookcounty.gov/images/logo-white.png" alt="Tillamook County Logo" style="height: 100px; border: none; box-shadow: none; background: none;" onerror="this.style.display='none'">
+                <h1>The Community Health Line</h1>
+                <div class="accent-bar"></div>
+                <h3>Increasing Health Program Awareness</h3>
+                <h4 style="margin-top: 50px;">A Proposal To Empower The Rural Residents Of Tillamook County </h4>
+            </section>
+
+            <!-- Slide 2: Challenge & Solution (Vertical Stack) -->
+            <section>
+                <!-- 2.1 The Challenge -->
+                <section>
+                    <h2>The Challenge: An Awareness Gap</h2>
+                    <p class="fragment">Tillamook County offers vital health services, but residents often don't know they exist.</p>
+                    <ul style="margin-top: 30px;">
+                        <li class="fragment"><i class="fas fa-bullhorn icon"></i>Key barrier to better health outcomes is <strong>awareness</strong>, not availability.</li>
+                        <li class="fragment"><i class="fas fa-notes-medical icon"></i>Critical areas affected: Diabetes, Opioid Support, and Maternal Health.</li>
+                        <li class="fragment"><i class="fas fa-mobile-alt icon"></i>Current communication methods (websites, social media) don't reach everyone effectively.</li>
+                    </ul>
+                </section>
+                <!-- 2.2 The Solution -->
+                <section>
+                    <h2>The Solution: A Community Health Line</h2>
+                    <p>A <strong>bilingual (English/Spanish)</strong>, automated SMS text-messaging service.</p>
+                    <div class="fragment">
+                        <p style="margin-top: 30px; font-size: 1.2em; background-color: #e9f5ff; padding: 20px; border-radius: 8px; border-left: 5px solid var(--tc-blue);">
+                            <i class="fas fa-comment-dots" style="color: var(--tc-blue);"></i>
+                            It feels like a helpful community bulletin board, not a complex "AI".
+                        </p>
+                    </div>
+                </section>
+                <!-- 2.3 Key Benefits -->
+                <section>
+                    <h2>Key Benefits</h2>
+                     <ul style="margin-top: 30px;">
+                        <li class="fragment">Meets residents on a platform they already use and trust.</li>
+                        <li class="fragment">No app to download, no website to navigate.</li>
+                        <li class="fragment">Provides proactive alerts and on-demand information.</li>
+                    </ul>
+                </section>
+            </section>
+            
+            <!-- Slide 3: How it Works (Vertical Stack) -->
+            <section>
+                <!-- 3.1 How it Works Intro -->
+                <section>
+                    <h2>How It Works</h2>
+                    <p>A simple process for both residents and the Health Department.</p>
+                    <p class="fragment" style="margin-top: 50px;">(Use the down arrow to see the flow for each group)</p>
+                </section>
+                <!-- 3.2 For Residents -->
+                <section>
+                    <h2>How It Works (For Residents)</h2>
+                    <p>Simple, intuitive, and immediate.</p>
+                    <div style="background: #f0f0f0; padding: 20px; border-radius: 10px; margin-top: 30px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        <p><strong><i class="fas fa-mobile-alt"></i> Resident Texts:</strong> JOIN</p>
+                        <p style="margin-left: 20px;"><strong><i class="fas fa-server"></i> System Responds:</strong> Welcome! Reply with a topic: 1. DIABETES, 2. OPIOID, 3. MATERNAL, 4. ALL</p>
+                        <hr>
+                        <p class="fragment"><strong><i class="fas fa-mobile-alt"></i> Resident Texts:</strong> SCREENING</p>
+                        <p class="fragment" style="margin-left: 20px;"><strong><i class="fas fa-server"></i> System Responds:</strong> Free diabetes screening next Tue, Aug 31 at the Community Hall from 9am-2pm. Walk-ins welcome.</p>
+                    </div>
+                </section>
+                <!-- 3.3 For Health Dept -->
+                <section>
+                    <h2>How It Works (For the Health Dept)</h2>
+                    <p>Designed for <strong>zero daily management</strong>.</p>
+                    <ul>
+                        <li class="fragment"><i class="fas fa-tachometer-alt icon"></i>Access to a simple, secure web dashboard.</li>
+                        <li class="fragment"><i class="fas fa-edit icon"></i>Fill out a simple form to add new events or alerts.</li>
+                        <li class="fragment"><i class="fas fa-paper-plane icon"></i>Schedule alerts to be sent to specific subscriber groups.</li>
+                        <li class="fragment"><i class="fas fa-power-off icon"></i>The system handles all resident interactions automatically.</li>
+                    </ul>
+                </section>
+            </section>
+
+            <!-- Slide 4: Measuring Success -->
+            <section>
+                <h2>Measuring Success</h2>
+                <p>The goal is a <strong>20% increase</strong> in participation at health events.</p>
+                <p style="margin-top: 30px;">We can track key metrics to measure impact:</p>
+                <ul>
+                    <li class="fragment"><i class="fas fa-chart-line icon"></i>Higher turnout for screening events.</li>
+                    <li class="fragment"><i class="fas fa-phone-alt icon"></i>Increase in calls to program hotlines.</li>
+                    <li class="fragment"><i class="fas fa-calendar-check icon"></i>Number of residents signing up for text-based reminders.</li>
+                </ul>
+            </section>
+
+            <!-- Slide 5: Next Steps -->
+            <section>
+                <h2>Discussion & Next Steps</h2>
+                <h3>Thank you</h3>
+                <div class="accent-bar"></div>
+                <p style="margin-top: 50px;">Let's discuss how we can make this a reality for Tillamook County.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            // Set the presentation size to a 16:9 aspect ratio
+            width: 1280,
+            height: 720,
+            // Factor of the display size that should remain empty around the content
+            margin: 0.04,
+
+            // The hash option updates the browser URL to reflect the current slide.
+            // This can cause security errors in sandboxed environments (like this one).
+            // Setting it to false disables this feature, fixing the error.
+            hash: false,
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+            // The "slide" transition is fast and professional
+            transition: 'slide', 
+            // The "fade" background transition is subtle
+            backgroundTransition: 'fade'
+        });
+    </script>
+</body>
+</html>

@@ -1,1 +1,1091 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Funding Readiness Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #4ade80;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .quiz-section {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .quiz-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+        }
+        
+        .question label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .question select, .question input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .question select:focus, .question input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .radio-option {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+        
+        .radio-option label {
+            display: block;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .radio-option input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+        }
+        
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-prev {
+            background: #f0f0f0;
+            color: #666;
+        }
+        
+        .btn-prev:hover {
+            background: #e0e0e0;
+        }
+        
+        .btn-next, .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-next:hover, .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .results {
+            padding: 40px;
+            display: none;
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        .score-circle svg {
+            transform: rotate(-90deg);
+        }
+        
+        .score-circle .score-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .score-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .score-label {
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .recommendation {
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .recommendation.excellent {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            color: white;
+        }
+        
+        .recommendation.good {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            color: white;
+        }
+        
+        .recommendation.moderate {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+        }
+        
+        .recommendation.poor {
+            background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+            color: white;
+        }
+        
+        .recommendation h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .factor-breakdown {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .factor-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .factor-item:last-child {
+            border-bottom: none;
+        }
+        
+        .factor-score {
+            font-weight: 600;
+        }
+        
+        .factor-score.high {
+            color: #22c55e;
+        }
+        
+        .factor-score.medium {
+            color: #f59e0b;
+        }
+        
+        .factor-score.low {
+            color: #ef4444;
+        }
+        
+        .action-items {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        
+        .action-items h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .action-items ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .action-items li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .action-items li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Self-Funding Readiness Assessment</h1>
+            <p>Evaluate if your client is ready for self-funded health insurance</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <!-- Section 1: Basic Information -->
+        <div class="quiz-section active" data-section="1">
+            <h2 class="section-title">Basic Company Information</h2>
+            
+            <div class="question">
+                <label>Number of Employees:</label>
+                <select id="employees" required>
+                    <option value="">Select range</option>
+                    <option value="50-75">50-75 employees</option>
+                    <option value="76-100">76-100 employees</option>
+                    <option value="101-150">101-150 employees</option>
+                    <option value="151-250">151-250 employees</option>
+                    <option value="251-500">251-500 employees</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label>Industry Type:</label>
+                <select id="industry" required>
+                    <option value="">Select industry</option>
+                    <option value="professional">Professional Services/Tech/Finance</option>
+                    <option value="retail">Retail/Hospitality</option>
+                    <option value="manufacturing">Manufacturing/Construction</option>
+                    <option value="healthcare">Healthcare/Social Services</option>
+                    <option value="transportation">Transportation/Logistics</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label>Geographic Distribution:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="single-state" name="geography" value="single">
+                        <label for="single-state">Single State</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="multi-state" name="geography" value="multi">
+                        <label for="multi-state">Multi-State</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <label>Average Employee Age:</label>
+                <select id="age" required>
+                    <option value="">Select range</option>
+                    <option value="under35">Under 35</option>
+                    <option value="35-45">35-45</option>
+                    <option value="46-50">46-50</option>
+                    <option value="over50">Over 50</option>
+                </select>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-prev" disabled>Previous</button>
+                <button class="btn btn-next" onclick="nextSection()">Next</button>
+            </div>
+        </div>
+        
+        <!-- Section 2: Financial Health -->
+        <div class="quiz-section" data-section="2">
+            <h2 class="section-title">Financial Health & Stability</h2>
+            
+            <div class="question">
+                <label>Annual Revenue:</label>
+                <select id="revenue" required>
+                    <option value="">Select range</option>
+                    <option value="under2m">Under $2M</option>
+                    <option value="2-5m">$2M - $5M</option>
+                    <option value="5-10m">$5M - $10M</option>
+                    <option value="10-25m">$10M - $25M</option>
+                    <option value="over25m">Over $25M</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label>Cash Reserves (Months of Operating Expenses):</label>
+                <select id="cash" required>
+                    <option value="">Select range</option>
+                    <option value="under1">Less than 1 month</option>
+                    <option value="1-2">1-2 months</option>
+                    <option value="2-3">2-3 months</option>
+                    <option value="3-6">3-6 months</option>
+                    <option value="over6">Over 6 months</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label>Revenue Stability (Last 3 Years):</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="stable" name="stability" value="stable">
+                        <label for="stable">Stable/Growing</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="fluctuating" name="stability" value="fluctuating">
+                        <label for="fluctuating">Some Fluctuation</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="volatile" name="stability" value="volatile">
+                        <label for="volatile">Highly Volatile</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <label>Employee Turnover Rate:</label>
+                <select id="turnover" required>
+                    <option value="">Select range</option>
+                    <option value="under10">Under 10%</option>
+                    <option value="10-15">10-15%</option>
+                    <option value="15-25">15-25%</option>
+                    <option value="over25">Over 25%</option>
+                </select>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-prev" onclick="prevSection()">Previous</button>
+                <button class="btn btn-next" onclick="nextSection()">Next</button>
+            </div>
+        </div>
+        
+        <!-- Section 3: Claims History -->
+        <div class="quiz-section" data-section="3">
+            <h2 class="section-title">Claims History & Experience</h2>
+            
+            <div class="question">
+                <label>Current Loss Ratio (Last 24 Months):</label>
+                <select id="lossratio" required>
+                    <option value="">Select range</option>
+                    <option value="under70">Under 70%</option>
+                    <option value="70-80">70-80%</option>
+                    <option value="80-90">80-90%</option>
+                    <option value="90-100">90-100%</option>
+                    <option value="over100">Over 100%</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label>Large Claims in Past 2 Years (Over $50K):</label>
+                <select id="largeclaims" required>
+                    <option value="">Select number</option>
+                    <option value="0">None</option>
+                    <option value="1-2">1-2 claims</option>
+                    <option value="3-5">3-5 claims</option>
+                    <option value="over5">Over 5 claims</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label>Claims Volatility (Month-to-Month Variation):</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="low-vol" name="volatility" value="low">
+                        <label for="low-vol">Low (±15%)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="mod-vol" name="volatility" value="moderate">
+                        <label for="mod-vol">Moderate (±25%)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="high-vol" name="volatility" value="high">
+                        <label for="high-vol">High (>40%)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <label>Known High-Cost Claimants:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="no-high" name="highcost" value="none">
+                        <label for="no-high">None Known</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="some-high" name="highcost" value="some">
+                        <label for="some-high">1-2 Members</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="many-high" name="highcost" value="many">
+                        <label for="many-high">3+ Members</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-prev" onclick="prevSection()">Previous</button>
+                <button class="btn btn-next" onclick="nextSection()">Next</button>
+            </div>
+        </div>
+        
+        <!-- Section 4: Administrative Readiness -->
+        <div class="quiz-section" data-section="4">
+            <h2 class="section-title">Administrative & Organizational Readiness</h2>
+            
+            <div class="question">
+                <label>HR/Benefits Team Size:</label>
+                <select id="hrteam" required>
+                    <option value="">Select</option>
+                    <option value="none">No dedicated benefits staff</option>
+                    <option value="partial">Part-time benefits admin</option>
+                    <option value="one">1 full-time benefits person</option>
+                    <option value="team">Benefits team (2+ people)</option>
+                </select>
+            </div>
+            
+            <div class="question">
+                <label>Experience with Self-Funding:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="no-exp" name="experience" value="none">
+                        <label for="no-exp">None</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="some-exp" name="experience" value="some">
+                        <label for="some-exp">Some Knowledge</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="prev-exp" name="experience" value="previous">
+                        <label for="prev-exp">Previously Self-Funded</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <label>CFO/Finance Team Engagement:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="high-engage" name="engagement" value="high">
+                        <label for="high-engage">Highly Engaged</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="mod-engage" name="engagement" value="moderate">
+                        <label for="mod-engage">Somewhat Engaged</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="low-engage" name="engagement" value="low">
+                        <label for="low-engage">Minimal Engagement</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="question">
+                <label>Risk Tolerance:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="conservative" name="risk" value="conservative">
+                        <label for="conservative">Conservative</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="moderate-risk" name="risk" value="moderate">
+                        <label for="moderate-risk">Moderate</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="aggressive" name="risk" value="aggressive">
+                        <label for="aggressive">Aggressive</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-prev" onclick="prevSection()">Previous</button>
+                <button class="btn btn-submit" onclick="calculateResults()">Get Results</button>
+            </div>
+        </div>
+        
+        <!-- Results Section -->
+        <div class="results" id="results">
+            <div class="score-circle">
+                <svg width="200" height="200">
+                    <circle cx="100" cy="100" r="90" stroke="#e0e0e0" stroke-width="20" fill="none"/>
+                    <circle id="scoreCircle" cx="100" cy="100" r="90" stroke="#667eea" stroke-width="20" fill="none"
+                            stroke-dasharray="565" stroke-dashoffset="565" stroke-linecap="round"/>
+                </svg>
+                <div class="score-text">
+                    <div class="score-number" id="scoreNumber">0</div>
+                    <div class="score-label">out of 100</div>
+                </div>
+            </div>
+            
+            <div class="recommendation" id="recommendation">
+                <h2 id="recommendationTitle">Calculating...</h2>
+                <p id="recommendationText"></p>
+            </div>
+            
+            <div class="factor-breakdown">
+                <h3>Score Breakdown</h3>
+                <div class="factor-item">
+                    <span>Company Profile</span>
+                    <span class="factor-score" id="profileScore">0/25</span>
+                </div>
+                <div class="factor-item">
+                    <span>Financial Stability</span>
+                    <span class="factor-score" id="financialScore">0/25</span>
+                </div>
+                <div class="factor-item">
+                    <span>Claims Experience</span>
+                    <span class="factor-score" id="claimsScore">0/30</span>
+                </div>
+                <div class="factor-item">
+                    <span>Organizational Readiness</span>
+                    <span class="factor-score" id="readinessScore">0/20</span>
+                </div>
+            </div>
+            
+            <div class="action-items">
+                <h3>Recommended Next Steps</h3>
+                <ul id="actionItems">
+                    <li>Calculating recommendations...</li>
+                </ul>
+            </div>
+            
+            <div class="action-items">
+                <h3>Stop-Loss Recommendations</h3>
+                <ul id="stopLossRecs">
+                    <li>Calculating stop-loss parameters...</li>
+                </ul>
+            </div>
+            
+            <div class="navigation">
+                <button class="btn btn-next" onclick="resetQuiz()">Start Over</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentSection = 1;
+        const totalSections = 4;
+        
+        function updateProgress() {
+            const progress = (currentSection / totalSections) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        
+        function nextSection() {
+            if (validateSection(currentSection)) {
+                document.querySelector(`.quiz-section[data-section="${currentSection}"]`).classList.remove('active');
+                currentSection++;
+                document.querySelector(`.quiz-section[data-section="${currentSection}"]`).classList.add('active');
+                updateProgress();
+            }
+        }
+        
+        function prevSection() {
+            document.querySelector(`.quiz-section[data-section="${currentSection}"]`).classList.remove('active');
+            currentSection--;
+            document.querySelector(`.quiz-section[data-section="${currentSection}"]`).classList.add('active');
+            updateProgress();
+        }
+        
+        function validateSection(section) {
+            const activeSection = document.querySelector(`.quiz-section[data-section="${section}"]`);
+            const requiredFields = activeSection.querySelectorAll('select:required, input[type="radio"]:required');
+            
+            let valid = true;
+            
+            // Check selects
+            activeSection.querySelectorAll('select').forEach(select => {
+                if (!select.value) {
+                    select.style.borderColor = '#ef4444';
+                    valid = false;
+                } else {
+                    select.style.borderColor = '#e0e0e0';
+                }
+            });
+            
+            // Check radio groups
+            const radioGroups = ['geography', 'stability', 'volatility', 'highcost', 'experience', 'engagement', 'risk'];
+            radioGroups.forEach(groupName => {
+                const radios = activeSection.querySelectorAll(`input[name="${groupName}"]`);
+                if (radios.length > 0) {
+                    const checked = activeSection.querySelector(`input[name="${groupName}"]:checked`);
+                    if (!checked) {
+                        valid = false;
+                    }
+                }
+            });
+            
+            if (!valid) {
+                alert('Please complete all fields before continuing.');
+            }
+            
+            return valid;
+        }
+        
+        function calculateResults() {
+            if (!validateSection(4)) return;
+            
+            // Hide quiz sections and show results
+            document.querySelectorAll('.quiz-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById('results').style.display = 'block';
+            
+            // Calculate scores
+            let profileScore = calculateProfileScore();
+            let financialScore = calculateFinancialScore();
+            let claimsScore = calculateClaimsScore();
+            let readinessScore = calculateReadinessScore();
+            
+            let totalScore = profileScore + financialScore + claimsScore + readinessScore;
+            
+            // Animate score circle
+            animateScore(totalScore);
+            
+            // Display breakdown
+            displayBreakdown(profileScore, financialScore, claimsScore, readinessScore);
+            
+            // Generate recommendations
+            generateRecommendations(totalScore, profileScore, financialScore, claimsScore, readinessScore);
+        }
+        
+        function calculateProfileScore() {
+            let score = 0;
+            
+            // Employee count (max 10 points)
+            const employees = document.getElementById('employees').value;
+            if (employees === '251-500') score += 10;
+            else if (employees === '151-250') score += 8;
+            else if (employees === '101-150') score += 6;
+            else if (employees === '76-100') score += 4;
+            else score += 2;
+            
+            // Industry (max 5 points)
+            const industry = document.getElementById('industry').value;
+            if (industry === 'professional') score += 5;
+            else if (industry === 'retail' || industry === 'other') score += 3;
+            else score += 1;
+            
+            // Geography (max 5 points)
+            const geography = document.querySelector('input[name="geography"]:checked');
+            if (geography && geography.value === 'single') score += 5;
+            else score += 2;
+            
+            // Age (max 5 points)
+            const age = document.getElementById('age').value;
+            if (age === '35-45') score += 5;
+            else if (age === 'under35') score += 4;
+            else if (age === '46-50') score += 2;
+            else score += 0;
+            
+            return score;
+        }
+        
+        function calculateFinancialScore() {
+            let score = 0;
+            
+            // Revenue (max 7 points)
+            const revenue = document.getElementById('revenue').value;
+            if (revenue === 'over25m') score += 7;
+            else if (revenue === '10-25m') score += 6;
+            else if (revenue === '5-10m') score += 4;
+            else if (revenue === '2-5m') score += 2;
+            else score += 0;
+            
+            // Cash reserves (max 8 points)
+            const cash = document.getElementById('cash').value;
+            if (cash === 'over6') score += 8;
+            else if (cash === '3-6') score += 6;
+            else if (cash === '2-3') score += 4;
+            else if (cash === '1-2') score += 2;
+            else score += 0;
+            
+            // Stability (max 5 points)
+            const stability = document.querySelector('input[name="stability"]:checked');
+            if (stability) {
+                if (stability.value === 'stable') score += 5;
+                else if (stability.value === 'fluctuating') score += 3;
+                else score += 0;
+            }
+            
+            // Turnover (max 5 points)
+            const turnover = document.getElementById('turnover').value;
+            if (turnover === 'under10') score += 5;
+            else if (turnover === '10-15') score += 3;
+            else if (turnover === '15-25') score += 1;
+            else score += 0;
+            
+            return score;
+        }
+        
+        function calculateClaimsScore() {
+            let score = 0;
+            
+            // Loss ratio (max 10 points)
+            const lossratio = document.getElementById('lossratio').value;
+            if (lossratio === 'under70') score += 10;
+            else if (lossratio === '70-80') score += 8;
+            else if (lossratio === '80-90') score += 5;
+            else if (lossratio === '90-100') score += 2;
+            else score += 0;
+            
+            // Large claims (max 7 points)
+            const largeclaims = document.getElementById('largeclaims').value;
+            if (largeclaims === '0') score += 7;
+            else if (largeclaims === '1-2') score += 5;
+            else if (largeclaims === '3-5') score += 2;
+            else score += 0;
+            
+            // Volatility (max 8 points)
+            const volatility = document.querySelector('input[name="volatility"]:checked');
+            if (volatility) {
+                if (volatility.value === 'low') score += 8;
+                else if (volatility.value === 'moderate') score += 4;
+                else score += 0;
+            }
+            
+            // High cost members (max 5 points)
+            const highcost = document.querySelector('input[name="highcost"]:checked');
+            if (highcost) {
+                if (highcost.value === 'none') score += 5;
+                else if (highcost.value === 'some') score += 3;
+                else score += 0;
+            }
+            
+            return score;
+        }
+        
+        function calculateReadinessScore() {
+            let score = 0;
+            
+            // HR team (max 5 points)
+            const hrteam = document.getElementById('hrteam').value;
+            if (hrteam === 'team') score += 5;
+            else if (hrteam === 'one') score += 4;
+            else if (hrteam === 'partial') score += 2;
+            else score += 0;
+            
+            // Experience (max 5 points)
+            const experience = document.querySelector('input[name="experience"]:checked');
+            if (experience) {
+                if (experience.value === 'previous') score += 5;
+                else if (experience.value === 'some') score += 3;
+                else score += 1;
+            }
+            
+            // CFO engagement (max 5 points)
+            const engagement = document.querySelector('input[name="engagement"]:checked');
+            if (engagement) {
+                if (engagement.value === 'high') score += 5;
+                else if (engagement.value === 'moderate') score += 3;
+                else score += 0;
+            }
+            
+            // Risk tolerance (max 5 points)
+            const risk = document.querySelector('input[name="risk"]:checked');
+            if (risk) {
+                if (risk.value === 'aggressive') score += 5;
+                else if (risk.value === 'moderate') score += 3;
+                else score += 1;
+            }
+            
+            return score;
+        }
+        
+        function animateScore(finalScore) {
+            const circle = document.getElementById('scoreCircle');
+            const number = document.getElementById('scoreNumber');
+            const circumference = 2 * Math.PI * 90;
+            const offset = circumference - (finalScore / 100) * circumference;
+            
+            let currentScore = 0;
+            const increment = finalScore / 50;
+            
+            const animation = setInterval(() => {
+                currentScore += increment;
+                if (currentScore >= finalScore) {
+                    currentScore = finalScore;
+                    clearInterval(animation);
+                }
+                
+                number.textContent = Math.round(currentScore);
+                circle.style.strokeDashoffset = circumference - (currentScore / 100) * circumference;
+                
+                // Change color based on score
+                if (currentScore >= 80) {
+                    circle.style.stroke = '#22c55e';
+                } else if (currentScore >= 60) {
+                    circle.style.stroke = '#3b82f6';
+                } else if (currentScore >= 40) {
+                    circle.style.stroke = '#f59e0b';
+                } else {
+                    circle.style.stroke = '#ef4444';
+                }
+            }, 20);
+        }
+        
+        function displayBreakdown(profile, financial, claims, readiness) {
+            document.getElementById('profileScore').textContent = profile + '/25';
+            document.getElementById('financialScore').textContent = financial + '/25';
+            document.getElementById('claimsScore').textContent = claims + '/30';
+            document.getElementById('readinessScore').textContent = readiness + '/20';
+            
+            // Color code scores
+            colorCodeScore('profileScore', profile, 25);
+            colorCodeScore('financialScore', financial, 25);
+            colorCodeScore('claimsScore', claims, 30);
+            colorCodeScore('readinessScore', readiness, 20);
+        }
+        
+        function colorCodeScore(elementId, score, max) {
+            const element = document.getElementById(elementId);
+            const percentage = (score / max) * 100;
+            
+            if (percentage >= 75) {
+                element.className = 'factor-score high';
+            } else if (percentage >= 50) {
+                element.className = 'factor-score medium';
+            } else {
+                element.className = 'factor-score low';
+            }
+        }
+        
+        function generateRecommendations(total, profile, financial, claims, readiness) {
+            const recommendation = document.getElementById('recommendation');
+            const title = document.getElementById('recommendationTitle');
+            const text = document.getElementById('recommendationText');
+            const actionItems = document.getElementById('actionItems');
+            const stopLossRecs = document.getElementById('stopLossRecs');
+            
+            let actions = [];
+            let stopLoss = [];
+            
+            // Determine recommendation level
+            if (total >= 80) {
+                recommendation.className = 'recommendation excellent';
+                title.textContent = 'Excellent Candidate for Self-Funding';
+                text.textContent = 'This client shows strong readiness across all key metrics. They are well-positioned to achieve significant savings through self-funding with appropriate stop-loss coverage.';
+                
+                actions = [
+                    'Proceed with detailed actuarial analysis and feasibility study',
+                    'Request 3 years of detailed claims data for modeling',
+                    'Schedule meetings with 3-5 stop-loss carriers for quotes',
+                    'Begin RFP process for TPA selection',
+                    'Target implementation within 6-9 months'
+                ];
+                
+                const employees = document.getElementById('employees').value;
+                if (employees === '251-500') {
+                    stopLoss = [
+                        'Specific Deductible: $100,000-150,000 per member',
+                        'Aggregate Attachment: 125% of expected claims',
+                        'Expected Stop-Loss Premium: $22-30 PEPM',
+                        'Consider no-laser provisions for rate stability'
+                    ];
+                } else if (employees === '151-250') {
+                    stopLoss = [
+                        'Specific Deductible: $75,000-100,000 per member',
+                        'Aggregate Attachment: 120% of expected claims',
+                        'Expected Stop-Loss Premium: $35-45 PEPM',
+                        'Negotiate rate cap of 25-30% at renewal'
+                    ];
+                } else {
+                    stopLoss = [
+                        'Specific Deductible: $40,000-75,000 per member',
+                        'Aggregate Attachment: 115% of expected claims',
+                        'Expected Stop-Loss Premium: $45-60 PEPM',
+                        'Consider level-funded option for first year'
+                    ];
+                }
+                
+            } else if (total >= 60) {
+                recommendation.className = 'recommendation good';
+                title.textContent = 'Good Candidate with Some Preparation Needed';
+                text.textContent = 'This client shows good potential for self-funding but needs to address some areas before transitioning. Consider a phased approach or level-funded arrangement.';
+                
+                // Identify weak areas
+                if (financial < 15) {
+                    actions.push('Strengthen cash reserves to 3+ months of operating expenses');
+                    actions.push('Establish dedicated claims reserve fund');
+                }
+                if (claims < 18) {
+                    actions.push('Implement wellness programs to improve claims experience');
+                    actions.push('Consider disease management for high-cost conditions');
+                }
+                if (readiness < 12) {
+                    actions.push('Invest in benefits administration resources');
+                    actions.push('Provide ERISA fiduciary training to leadership');
+                }
+                
+                actions.push('Consider level-funded plan as stepping stone');
+                actions.push('Target self-funding transition in 12-18 months');
+                
+                stopLoss = [
+                    'Start with level-funded arrangement',
+                    'Specific Deductible: $25,000-50,000 (in level-funded)',
+                    'Build claims history for better stop-loss terms',
+                    'Expected total cost: 5-10% above current fully-insured'
+                ];
+                
+            } else if (total >= 40) {
+                recommendation.className = 'recommendation moderate';
+                title.textContent = 'Moderate Candidate - Significant Preparation Required';
+                text.textContent = 'This client needs substantial improvements before self-funding becomes viable. Focus on building financial stability and improving risk profile.';
+                
+                actions = [
+                    'Remain fully-insured for next 12-24 months',
+                    'Focus on improving identified weak areas',
+                    'Request quarterly claims reports to track progress',
+                    'Implement cost containment strategies',
+                    'Re-evaluate readiness in 12 months'
+                ];
+                
+                if (financial < 10) {
+                    actions.push('Priority: Build cash reserves and stabilize revenue');
+                }
+                if (claims < 12) {
+                    actions.push('Priority: Implement aggressive wellness initiatives');
+                }
+                
+                stopLoss = [
+                    'Not recommended for traditional self-funding at this time',
+                    'If pursuing: Minimum $15,000-25,000 specific deductible',
+                    'Aggregate at 110% with monthly accommodation',
+                    'Consider consortium or captive arrangements for risk sharing'
+                ];
+                
+            } else {
+                recommendation.className = 'recommendation poor';
+                title.textContent = 'Not Ready for Self-Funding';
+                text.textContent = 'This client should remain fully-insured. Significant improvements needed across multiple areas before considering self-funding.';
+                
+                actions = [
+                    'Maintain fully-insured coverage',
+                    'Focus on fundamental business stability',
+                    'Address high employee turnover if applicable',
+                    'Build financial reserves over next 2-3 years',
+                    'Implement basic wellness and cost containment programs',
+                    'Re-evaluate in 24-36 months'
+                ];
+                
+                stopLoss = [
+                    'Self-funding not advisable at this time',
+                    'Focus on improving fully-insured plan performance',
+                    'Track loss ratios quarterly for future evaluation',
+                    'Build relationship with benefits consultant for long-term planning'
+                ];
+            }
+            
+            // Display action items
+            actionItems.innerHTML = actions.map(item => `<li>${item}</li>`).join('');
+            stopLossRecs.innerHTML = stopLoss.map(item => `<li>${item}</li>`).join('');
+        }
+        
+        function resetQuiz() {
+            currentSection = 1;
+            document.getElementById('results').style.display = 'none';
+            document.querySelectorAll('.quiz-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelector('.quiz-section[data-section="1"]').classList.add('active');
+            
+            // Clear all form fields
+            document.querySelectorAll('select').forEach(select => {
+                select.value = '';
+                select.style.borderColor = '#e0e0e0';
+            });
+            document.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.checked = false;
+            });
+            
+            updateProgress();
+        }
+    </script>
+</body>
+</html>
